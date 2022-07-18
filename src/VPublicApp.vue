@@ -16,8 +16,8 @@ export default defineComponent({
   watch: {
     '$route.params': {
       handler (newValue, oldVal) {
-        this.publicLocale = newValue.publicLocale
-        // console.log(this.publicLocale)
+        // debugger
+        this.publicLocale = 'en'// newValue.publicLocale
       }
     },
     gqlError: {
@@ -102,10 +102,10 @@ export default defineComponent({
     return {
       publicLocale,
       // localiseProvider,
-      sitedetailsProvider
-      // gqlFetching: result.fetching,
-      // gqlData: result.data,
-      // gqlError: result.error
+      sitedetailsProvider,
+      gqlFetching: result.fetching,
+      gqlData: result.data,
+      gqlError: result.error
     }
   }
 })

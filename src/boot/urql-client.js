@@ -7,6 +7,6 @@ export default boot(({ app }) => {
   // const configData = currentConfigData()
   // const gak = configData.GMAPS_API_KEY
   app.use(urql, {
-    url: '/graphql'
+    url: 'http://localhost:3000/graphql'
   })
 })

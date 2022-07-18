@@ -4,8 +4,24 @@ const routes = [
     path: '/',
     component: () => import('layouts/PublicLayout.vue'),
     children: [
-      { path: '', component: () => import('pages/IndexPage.vue') }
-    ]
+      {
+        path: '',
+        name: 'rDefaultLocaleHomePage',
+        component: () => import('pages/IndexPage.vue')
+        // component: () => import('pages/PageContainer.vue')
+      },
+      {
+        path: '/:publicLocale',
+        name: 'rLocaleHome',
+        component: () => import('pages/EmptyContainer.vue'),
+        children: [
+          // {
+          //   path: '',
+          //   name: 'rLocaleHomePage',
+          //   component: () => import('pages/PageContainer.vue')
+          // }
+        ]
+      }]
   },
 
   // Always leave this as last one,
