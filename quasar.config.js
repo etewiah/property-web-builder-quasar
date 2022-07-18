@@ -28,9 +28,11 @@ module.exports = configure(function (/* ctx */) {
     // --> boot files are part of "main.js"
     // https://v2.quasar.dev/quasar-cli/boot-files
     boot: [
-
+      {
+        server: false, // run on client-side only!
+        path: 'urql-client' // references /src/boot/<name>.js
+      }
     ],
-
     // https://v2.quasar.dev/quasar-cli-vite/quasar-config-js#css
     css: [
       'app.scss'

@@ -2,9 +2,9 @@
   <router-view />
 </template>
 <script>
-import { defineComponent, ref } from 'vue'
+import { defineComponent, ref, computed } from 'vue'
 import { useRoute } from 'vue-router'
-// import { useQuery } from '@urql/vue'
+import { useQuery } from '@urql/vue'
 // import { localiseProvider } from 'src/compose/localise-provider.js'
 import { sitedetailsProvider } from 'src/compose/sitedetails-provider.js'
 export default defineComponent({
@@ -59,46 +59,46 @@ export default defineComponent({
   setup () {
     const route = useRoute()
     const publicLocale = ref(route.params.publicLocale)
-    // const result = useQuery({
-    //   pause: computed(() => !publicLocale.value),
-    //   variables: {
-    //     publicLocale
-    //   },
-    //   query: `
-    //     query ($publicLocale: String! ) {
-    //         getSiteDetails(locale: $publicLocale) {
-    //             supportedLocales,
-    //             styleVariables,
-    //             supportedLocalesWithVariants,
-    //             agency {
-    //               emailPrimary,
-    //               displayName,
-    //               phoneNumberPrimary
-    //             }
-    //             footerDisplayLinks {
-    //               sortOrder,
-    //               slug,
-    //               linkUrl,
-    //               linkPath,
-    //               linkTitle,
-    //               linkPathParams,
-    //             }
-    //             topNavDisplayLinks {
-    //               sortOrder,
-    //               slug,
-    //               linkUrl,
-    //               linkPath,
-    //               linkTitle,
-    //               linkPathParams,
-    //             }
-    //         }
-    //         getTranslations(locale: $publicLocale) {
-    //           locale,
-    //           result
-    //         }
-    //     }
-    //   `
-    // })
+    const result = useQuery({
+      pause: computed(() => !publicLocale.value),
+      variables: {
+        publicLocale
+      },
+      query: `
+        query ($publicLocale: String! ) {
+            getSiteDetails(locale: $publicLocale) {
+                supportedLocales,
+                styleVariables,
+                supportedLocalesWithVariants,
+                agency {
+                  emailPrimary,
+                  displayName,
+                  phoneNumberPrimary
+                }
+                footerDisplayLinks {
+                  sortOrder,
+                  slug,
+                  linkUrl,
+                  linkPath,
+                  linkTitle,
+                  linkPathParams,
+                }
+                topNavDisplayLinks {
+                  sortOrder,
+                  slug,
+                  linkUrl,
+                  linkPath,
+                  linkTitle,
+                  linkPathParams,
+                }
+            }
+            getTranslations(locale: $publicLocale) {
+              locale,
+              result
+            }
+        }
+      `
+    })
     return {
       publicLocale,
       // localiseProvider,
