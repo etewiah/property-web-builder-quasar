@@ -5,12 +5,12 @@
 import { defineComponent, ref, computed } from 'vue'
 import { useRoute } from 'vue-router'
 import { useQuery } from '@urql/vue'
-// import { localiseProvider } from 'src/compose/localise-provider.js'
+import { localiseProvider } from 'src/compose/localise-provider.js'
 import { sitedetailsProvider } from 'src/compose/sitedetails-provider.js'
 export default defineComponent({
   name: 'VPublicApp',
   provide: {
-    // localiseProvider,
+    localiseProvider,
     sitedetailsProvider
   },
   watch: {
@@ -101,7 +101,7 @@ export default defineComponent({
     })
     return {
       publicLocale,
-      // localiseProvider,
+      localiseProvider,
       sitedetailsProvider,
       gqlFetching: result.fetching,
       gqlData: result.data,

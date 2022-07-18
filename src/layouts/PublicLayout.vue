@@ -68,16 +68,9 @@
       <q-toolbar class="max-ctr">
         <q-toolbar-title>
           <strong>{{ sitedetailsProvider.state.agency.displayName }}</strong>
-          <!-- <span style="color: black">Web</span
-          ><strong class="navy--text text--darken-1">Builder</strong> -->
         </q-toolbar-title>
         <q-space />
         <div class="q-gutter-sm row items-center no-wrap">
-          <!-- <q-btn round flat>
-            <q-avatar size="26px">
-              <img src="https://cdn.quasar.dev/img/boy-avatar.png" />
-            </q-avatar>
-          </q-btn> -->
         </div>
         <q-tabs shrink>
           <q-route-tab
