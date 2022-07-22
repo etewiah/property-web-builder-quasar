@@ -10,7 +10,10 @@
 
 const { configure } = require('quasar/wrappers')
 
-module.exports = configure(function (/* ctx */) {
+const dotenv = require('dotenv')
+const dotenvConfig = dotenv.config().parsed
+
+module.exports = configure(function (ctx) {
   return {
     eslint: {
       // fix: true,
@@ -63,7 +66,7 @@ module.exports = configure(function (/* ctx */) {
         node: 'node16'
       },
 
-      vueRouterMode: 'hash' // available values: 'hash', 'history'
+      vueRouterMode: 'hash', // available values: 'hash', 'history'
       // vueRouterBase,
       // vueDevtools,
       // vueOptionsAPI: false,
@@ -73,6 +76,12 @@ module.exports = configure(function (/* ctx */) {
       // publicPath: '/',
       // analyze: true,
       // env: {},
+      env: {
+        DIST_REV: process.env.DIST_REV,
+        GMAPS_API_KEY: ctx.dev
+          ? dotenvConfig.GMAPS_API_KEY
+          : process.env.GMAPS_API_KEY
+      }
       // rawDefine: {}
       // ignorePublicFolder: true,
       // minify: false,
@@ -90,7 +99,38 @@ module.exports = configure(function (/* ctx */) {
     // Full list of options: https://v2.quasar.dev/quasar-cli-vite/quasar-config-js#devServer
     devServer: {
       // https: true
-      open: true // opens browser window automatically
+      open: false, // opens browser window automatically
+      proxy: {
+        // string shorthand
+        '/uploads': dotenvConfig.UPLOADS_BASE_URL,
+        // '/uploads': '',
+        '/graphql': dotenvConfig.GRAPHQL_BASE_URL,
+        // // with options
+        // '/api': {
+        //   target: 'http://jsonplaceholder.typicode.com',
+        //   changeOrigin: true,
+        //   rewrite: (path) => path.replace(/^\/api/, '')
+        // },
+        // // with RegEx
+        // '^/fallback/.*': {
+        //   target: 'http://jsonplaceholder.typicode.com',
+        //   changeOrigin: true,
+        //   rewrite: (path) => path.replace(/^\/fallback/, '')
+        // },
+        // // Using the proxy instance
+        // '/api': {
+        //   target: 'http://jsonplaceholder.typicode.com',
+        //   changeOrigin: true,
+        //   configure: (proxy, options) => {
+        //     // proxy will be an instance of 'http-proxy'
+        //   }
+        // },
+        // // Proxying websockets or socket.io
+        // '/socket.io': {
+        //   target: 'ws://localhost:3000',
+        //   ws: true
+        // }
+      }
     },
 
     // https://v2.quasar.dev/quasar-cli-vite/quasar-config-js#framework

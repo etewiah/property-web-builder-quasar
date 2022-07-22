@@ -1,12 +1,11 @@
 import { boot } from 'quasar/wrappers'
-// import VueGoogleMaps from '@fawmi/vue-google-maps'
-// import { currentConfigData } from 'src/utils/config-data'
+import { currentConfigData } from 'src/compose/config-data'
 import urql from '@urql/vue'
 
 export default boot(({ app }) => {
-  // const configData = currentConfigData()
-  // const gak = configData.GMAPS_API_KEY
+  const configData = currentConfigData()
+  const urqlClientUrl = configData.urqlClientUrl
   app.use(urql, {
-    url: 'http://localhost:3000/graphql'
+    url: urqlClientUrl // 'http://localhost:3000/graphql'
   })
 })
