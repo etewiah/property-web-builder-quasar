@@ -29,9 +29,13 @@ module.exports = configure(function (/* ctx */) {
     // https://v2.quasar.dev/quasar-cli/boot-files
     boot: [
       {
-        server: false, // run on client-side only!
+        server: true,
         path: 'urql-client' // references /src/boot/<name>.js
-      }
+      },
+      {
+        server: false, // run on client-side only!
+        path: 'vue-google-maps' // references /src/boot/<name>.js
+      },
     ],
     // https://v2.quasar.dev/quasar-cli-vite/quasar-config-js#css
     css: [
@@ -104,7 +108,9 @@ module.exports = configure(function (/* ctx */) {
       // directives: [],
 
       // Quasar plugins
-      plugins: []
+      plugins: ['Notify']
+      // plugins: ["LocalStorage", "Notify", "Meta", "Cookies", "Loading"],
+
     },
 
     // animations: 'all', // --- includes all animations
