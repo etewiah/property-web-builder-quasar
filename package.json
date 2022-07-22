@@ -10,6 +10,7 @@
     "test": "echo \"No test specified\" && exit 0"
   },
   "dependencies": {
+    "@fawmi/vue-google-maps": "^0.9.72",
     "@quasar/extras": "^1.0.0",
     "@urql/vue": "^0.6.3",
     "graphql": "^16.5.0",
