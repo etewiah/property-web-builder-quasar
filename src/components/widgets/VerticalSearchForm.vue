@@ -68,11 +68,12 @@ export default {
     },
   },
   methods: {
-    triggerSearchUpdate(fieldDetails) {
+    triggerSearchUpdate(fieldDetails, newValue) {
       if (fieldDetails.fieldName === 'minPrice') {
-        this.newCurrentMinPriceValue = fieldDetails.newValue
+        this.newCurrentMinPriceValue = newValue
       }
       // up the chain
+      fieldDetails.newValue = newValue
       this.$emit('triggerSearchUpdate', fieldDetails)
     },
   },

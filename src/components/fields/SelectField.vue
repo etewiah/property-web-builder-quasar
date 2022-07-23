@@ -98,8 +98,8 @@ export default {
   },
   methods: {
     fieldChangeHandler(selectItem) {
-      // this.fieldDetails.newValue = selectItem.value
-      // this.$emit('selectChanged', this.fieldDetails)
+      const newValue = selectItem.value
+      this.$emit('selectChanged', this.fieldDetails, newValue)
     },
   },
 }
