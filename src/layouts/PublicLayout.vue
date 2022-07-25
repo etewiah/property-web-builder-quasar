@@ -88,16 +88,16 @@
         <router-view :key="$route" />
       </q-page>
     </q-page-container>
-    <!-- <PwbFooter></PwbFooter> -->
+    <PwbFooter></PwbFooter>
   </q-layout>
 </template>
 <script>
 import { defineComponent } from 'vue'
-// // import PwbFooter from '~/v-public-app/src/components/widgets/PwbFooter.vue'
+import PwbFooter from 'components/widgets/PwbFooter.vue'
 export default defineComponent({
   name: 'PublicLayout',
   inject: ['sitedetailsProvider'],
-  // components: { PwbFooter },
+  components: { PwbFooter },
   computed: {
     langNavs () {
       const supportedLocales =

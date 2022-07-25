@@ -1,5 +1,5 @@
 <template>
-  <router-view />
+ <router-view :key="$route" />
 </template>
 <script>
 import { defineComponent, ref, computed } from 'vue'
@@ -16,8 +16,7 @@ export default defineComponent({
   watch: {
     '$route.params': {
       handler (newValue, oldVal) {
-        // debugger
-        this.publicLocale = 'en'// newValue.publicLocale
+        this.publicLocale = newValue.publicLocale
       }
     },
     gqlError: {
@@ -58,7 +57,7 @@ export default defineComponent({
   mounted () {},
   setup () {
     const route = useRoute()
-    const publicLocale = ref(route.params.publicLocale)
+    const publicLocale = ref(route.params.publicLocale || 'en')
     const result = useQuery({
       pause: computed(() => !publicLocale.value),
       variables: {

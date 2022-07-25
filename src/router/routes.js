@@ -7,8 +7,7 @@ const routes = [
       {
         path: '',
         name: 'rDefaultLocaleHomePage',
-        component: () => import('pages/IndexPage.vue')
-        // component: () => import('pages/PageContainer.vue')
+        component: () => import('pages/PageContainer.vue')
       },
       {
         path: '/:publicLocale',

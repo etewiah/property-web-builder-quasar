@@ -63,7 +63,7 @@ export default defineComponent({
     if (route.name === 'rPublicPage') {
       pageSlug = route.params.pageSlug
     }
-    const publicLocale = ref(route.params.publicLocale)
+    const publicLocale = ref(route.params.publicLocale || 'en')
     const result = useQuery({
       pause: computed(() => !publicLocale.value),
       variables: {
